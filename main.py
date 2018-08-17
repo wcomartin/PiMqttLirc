@@ -17,16 +17,13 @@ def on_message(client, userdata, msg):
     print(msg.topic)
 
     if msg.topic == "IR1/TV/POWER":
-        tv.toggle_power()
-        client.publish("IR1/TV/POWER/STATE", msg.payload)
+        tv.toggle_power(client, msg)
 
     if msg.topic == "IR1/ANDROID/POWER":
-        android.toggle_power()
-        client.publish("IR1/ANDROID/POWER/STATE", msg.payload)
+        android.toggle_power(client, msg)
 
     if msg.topic == "IR1/XBOX/POWER":
-        xbox.toggle_power()
-        client.publish("IR1/XBOX/POWER/STATE", msg.payload)
+        xbox.toggle_power(client, msg)
 
 
 client = mqtt.Client()
